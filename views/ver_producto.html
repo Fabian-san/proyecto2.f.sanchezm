@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* Contenedor principal */
+        .producto-detalle {
+            width: 60%;
+            margin: 40px auto;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .producto-detalle h1 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .producto-detalle a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .producto-detalle a:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <div class="producto-detalle">
+        <h1>Nombre: {{ producto.nombre }}</h1>
+        <h1>Precio: ${{ producto.precio_publico }}</h1>
+        <h1>Tipo de vaso: {{ producto.tipo_vaso }}</h1>
+        <h1>Volumen: {{ producto.volumen }}</h1>
+        <h1>Tipo: {{ producto.tipo_producto }}</h1>
+        <a href="{{ url_for('producto_bp.lista_productos') }}">Regresar</a>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</body>
+</html>
+   
